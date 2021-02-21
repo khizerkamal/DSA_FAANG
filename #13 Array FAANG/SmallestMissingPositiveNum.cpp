@@ -14,7 +14,7 @@ int main()
         cin >> a[i];
     }
 
-    int N = 1e6 + 2;
+    int N = 20;  //1e6 + 2;
     int check[N];
     for (int i = 0; i < N; i++)
     {
