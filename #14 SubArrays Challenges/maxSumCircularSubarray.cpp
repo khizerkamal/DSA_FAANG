@@ -31,18 +31,21 @@ int main()
     {
         cin >> a[i];
     }
-    // Main Logic
-    int wrapSum = 0;
-    int nonWrapSum = 0;
-
+    //---------Main Logic---------
+    int wrapSum = 0;     //For Case I (Non-Circular)
+    int nonWrapSum = 0;  //For Case II (Circular)
+    
+    //Solving Case I
     nonWrapSum = kadane(a, n);
-    int sum = 0;
+
+    //Solving Case II
+    int totalSum = 0;
     for (int i = 0; i < n; i++)
     {
-        sum += a[i];
+        totalSum += a[i];
         a[i] = -a[i];
     }
-    wrapSum = sum + kadane(a, n);
+    wrapSum = totalSum + kadane(a, n);
 
     cout << max(wrapSum, nonWrapSum) << endl;
 
