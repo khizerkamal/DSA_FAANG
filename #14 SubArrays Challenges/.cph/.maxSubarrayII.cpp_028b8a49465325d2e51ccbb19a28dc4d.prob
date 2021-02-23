@@ -1,0 +1,1 @@
+{"name":"Local: maxSubarrayII","url":"e:\\DataStructures & Algorithms\\DSA-CODING\\#14 SubArrays Challenges\\maxSubarrayII.cpp","tests":[{"id":1613980407350,"input":"5\n1 5 -3 6 5","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\DataStructures & Algorithms\\DSA-CODING\\#14 SubArrays Challenges\\maxSubarrayII.cpp","group":"local","local":true}
