@@ -4,35 +4,57 @@ using namespace std;
 int main()
 {
 
-    // Making a 2D Array
-    int n, m;
-    cin >> n >> m;
-    int a[n][m];
-    for (int i = 0; i < n; i++)
+    int n1, n2, n3;
+    cin >> n1 >> n2 >> n3;
+    int m1[n1][n2];
+    int m2[n2][n3];
+    // Reading Matrix 1
+    for (int i = 0; i < n1; i++)
     {
-        for (int j = 0; j < m; j++)
+        for (int j = 0; j < n2; j++)
         {
-            cin >> a[i][j];
+            cin >> m1[i][j];
+        }
+    }
+    // Reading Matrix 2
+    for (int i = 0; i < n2; i++)
+    {
+        for (int j = 0; j < n3; j++)
+        {
+            cin >> m2[i][j];
+        }
+    }
+    // Making Ans Array
+    int ans[n1][n3];
+    for (int i = 0; i < n1; i++)
+    {
+        for (int j = 0; j < n3; j++)
+        {
+            ans[i][j] = 0;
         }
     }
 
-    // Main Logic
-    for (int i = 0; i < n; i++)
+    // ------------Main Logic------------
+    // Here n1-->row of m1
+    // n2-->col of m1 and row of m2
+    // n3-->col of m2
+    for (int i = 0; i < n1; i++)
     {
-        for (int j = i; j < n; j++)
+        for (int j = 0; j < n3; j++)
         {
-            int temp = a[i][j];
-            a[i][j] = a[j][i];
-            a[j][i] = temp;
+            for (int k = 0; k < n2; k++)
+            {
+                ans[i][j] += m1[i][k] * m2[k][j];
+            }
         }
     }
 
-    // Printint Answer
-    for (int i = 0; i < n; i++)
+    // Printing ans Array
+    for (int i = 0; i < n1; i++)
     {
-        for (int j = 0; j < m; j++)
+        for (int j = 0; j < n3; j++)
         {
-            cout << a[i][j] << " ";
+            cout << ans[i][j] << " ";
         }
         cout << endl;
     }
