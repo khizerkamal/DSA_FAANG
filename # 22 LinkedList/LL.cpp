@@ -49,6 +49,12 @@ bool linearSearch(node * head, int key){
     return false;
 }
 
+void deleteAtHead(node* &head){
+    node *todelete = head;
+    head = head->next;
+    delete todelete;
+}
+
 void deletion(node* &head, int val){
     // Corner Cases
     if(head == NULL){
@@ -71,12 +77,6 @@ void deletion(node* &head, int val){
     delete todelete;
 }
 
-void deleteAtHead(node* &head){
-    node *todelete = head;
-    head = head->next;
-    delete todelete;
-}
-
 void display(node* head){
     node *temp = head;
     while(temp != NULL){
@@ -84,6 +84,37 @@ void display(node* head){
         temp = temp->next;
     }
     cout<< "NULL" << endl;
+}
+
+// ------------ REVERSE A LINKED LIST ------------
+
+// ITERATIVE APPROACH
+node* reverseIterative(node* &head){
+    node *prevptr = NULL;
+    node *currptr = head;
+    node *nextptr;
+
+    while(currptr != NULL){
+        nextptr = currptr->next;
+        currptr->next = prevptr;
+        prevptr = currptr;
+        currptr = nextptr;
+    }
+
+    return prevptr;
+}
+
+// RECURSIVE APPROACH
+node* reverseRecursive(node* &head){
+    if(head == NULL || head->next == NULL){
+        return head;
+    }
+
+    node *newhead = reverseRecursive(head->next);
+    head->next->next = head;
+    head->next = NULL;
+
+    return newhead;
 }
 
 int main(){
@@ -98,8 +129,11 @@ int main(){
     // cout << linearSearch(head, 2) << endl;
     // deletion(head, 2);
     // display(head);
-    deleteAtHead(head);
-    display(head);
+    // deleteAtHead(head);
+    // node* newhead = reverseIterative(head);
+    node* newhead = reverseRecursive(head);
+
+    display(newhead);
 
     return 0;
 }
